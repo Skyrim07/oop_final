@@ -1,0 +1,3 @@
+Trek,Mountain Bike,20.0,false
+Specialized,Electric Bike,30.0,true
+Giant,Gearless Bike,15.0,false

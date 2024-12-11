@@ -1,34 +1,28 @@
 import java.io.Serializable;
 
-public class BookingInfo implements Serializable {
-    private String customerName;
-    private String bikeModel;
-    private String rentalDate;
-    private int rentalDuration;
+class BookingInfo {
+    private String brand;
+    private String type;
+    private double price;
     private boolean available;
 
-    public BookingInfo(String customerName, String bikeModel, String rentalDate, int rentalDuration, boolean available) {
-        this.customerName = customerName;
-        this.bikeModel = bikeModel;
-        this.rentalDate = rentalDate;
-        this.rentalDuration = rentalDuration;
+    public BookingInfo(String brand, String type, double price, boolean available) {
+        this.brand = brand;
+        this.type = type;
+        this.price = price;
         this.available = available;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getBrand() {
+        return brand;
     }
 
-    public String getBikeModel() {
-        return bikeModel;
+    public String getType() {
+        return type;
     }
 
-    public String getRentalDate() {
-        return rentalDate;
-    }
-
-    public int getRentalDuration() {
-        return rentalDuration;
+    public double getPrice() {
+        return price;
     }
 
     public boolean isAvailable() {
@@ -41,11 +35,12 @@ public class BookingInfo implements Serializable {
 
     @Override
     public String toString() {
-        return customerName + "," + bikeModel + "," + rentalDate + "," + rentalDuration + "," + available;
+        return brand + "," + type + "," + price + "," + available;
     }
 
     public static BookingInfo fromString(String line) {
         String[] parts = line.split(",");
-        return new BookingInfo(parts[0], parts[1], parts[2], Integer.parseInt(parts[3]), Boolean.parseBoolean(parts[4]));
+        return new BookingInfo(parts[0], parts[1], Double.parseDouble(parts[2]), Boolean.parseBoolean(parts[3]));
     }
 }
+

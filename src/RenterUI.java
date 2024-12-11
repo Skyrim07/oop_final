@@ -10,16 +10,10 @@ class RenterUI {
         JPanel mainPanel = new JPanel(new GridLayout(3, 1, 10, 10));
 
         JButton browseBikesButton = new JButton("Browse Bikes");
-        JButton searchBikesButton = new JButton("Search Bikes");
         JButton viewHistoryButton = new JButton("View Booking History");
 
         browseBikesButton.addActionListener(e -> {
             new BrowseBikesUI();
-            frame.dispose();
-        });
-
-        searchBikesButton.addActionListener(e -> {
-            new SearchBikesUI();
             frame.dispose();
         });
 
@@ -29,7 +23,6 @@ class RenterUI {
         });
 
         mainPanel.add(browseBikesButton);
-        mainPanel.add(searchBikesButton);
         mainPanel.add(viewHistoryButton);
 
         frame.add(mainPanel, BorderLayout.CENTER);

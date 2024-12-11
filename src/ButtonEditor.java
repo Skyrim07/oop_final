@@ -18,29 +18,26 @@ class ButtonEditor extends DefaultCellEditor {
         this.bookings = bookings;
         button = new JButton();
         button.setOpaque(true);
-        button.addActionListener(e -> handleButtonClick());
+        button.addActionListener(e -> fireEditingStopped());
     }
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
         label = (value == null) ? "" : value.toString();
         button.setText(label);
+        isPushed = true;
         currentRow = row;
+        System.out.println("Row selected: " + currentRow); // Debug statement
         return button;
-    }
-
-    private void handleButtonClick() {
-        if (currentRow >= 0 && currentRow < bookings.size()) {
-            BookingInfo booking = bookings.get(currentRow);
-            new BikeDetailsUI(parentFrame, "Bike Details", booking, browseBikesUI);
-            fireEditingStopped();
-        } else {
-            JOptionPane.showMessageDialog(parentFrame, "Invalid row selection.");
-        }
     }
 
     @Override
     public Object getCellEditorValue() {
+        if (isPushed) {
+            System.out.println("View Details button clicked for row: " + currentRow);
+            BookingInfo booking = bookings.get(currentRow);
+            new BikeDetailsUI(parentFrame, "Bike Details", booking, browseBikesUI);
+        }
         isPushed = false;
         return label;
     }

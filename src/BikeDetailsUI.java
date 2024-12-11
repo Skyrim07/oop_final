@@ -7,11 +7,10 @@ class BikeDetailsUI {
         dialog.setSize(400, 300);
         dialog.setLocationRelativeTo(parentFrame);
 
-        JPanel panel = new JPanel(new GridLayout(5, 1, 10, 10));
-        panel.add(new JLabel("Customer: " + booking.getCustomerName()));
-        panel.add(new JLabel("Bike Model: " + booking.getBikeModel()));
-        panel.add(new JLabel("Rental Date: " + booking.getRentalDate()));
-        panel.add(new JLabel("Duration (days): " + booking.getRentalDuration()));
+        JPanel panel = new JPanel(new GridLayout(4, 1, 10, 10));
+        panel.add(new JLabel("Brand: " + booking.getBrand()));
+        panel.add(new JLabel("Type: " + booking.getType()));
+        panel.add(new JLabel("Price: $" + booking.getPrice()));
         panel.add(new JLabel("Availability: " + (booking.isAvailable() ? "Available" : "Unavailable")));
 
         JButton bookButton = new JButton("Book");
@@ -20,9 +19,9 @@ class BikeDetailsUI {
             if (booking.isAvailable()) {
                 booking.setAvailable(false);
                 BookingDataManager.getInstance().saveBookingData();
-                browseBikesUI.refreshTableData(); // Refresh the table in BrowseBikesUI
+                browseBikesUI.refreshTableData();
                 JOptionPane.showMessageDialog(dialog, "Bike booked successfully!");
-                dialog.dispose(); // Close the details dialog
+                dialog.dispose();
             }
         });
 

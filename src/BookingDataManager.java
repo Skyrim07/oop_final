@@ -2,15 +2,13 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookingDataManager {
-    private static final String FILE_PATH = "bookingData.txt";
+class BookingDataManager {
+    private static final String FILE_PATH = "bikesData.txt";
     private static BookingDataManager instance;
     private List<BookingInfo> bookingList;
 
     private BookingDataManager() {
         bookingList = loadBookingData();
-
-        // Add default data if the booking list is empty
         if (bookingList.isEmpty()) {
             addDefaultData();
             saveBookingData();
@@ -19,14 +17,13 @@ public class BookingDataManager {
 
     public static BookingDataManager getInstance() {
         if (instance == null) {
-            instance = new BookingDataManager();
+            synchronized (BookingDataManager.class) {
+                if (instance == null) {
+                    instance = new BookingDataManager();
+                }
+            }
         }
         return instance;
-    }
-
-    public void addBooking(BookingInfo booking) {
-        bookingList.add(booking);
-        saveBookingData();
     }
 
     public List<BookingInfo> getBookings() {
@@ -52,7 +49,7 @@ public class BookingDataManager {
                 bookings.add(BookingInfo.fromString(line));
             }
         } catch (FileNotFoundException e) {
-            // No existing file, return an empty list
+            // If the file doesn't exist, return an empty list
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,8 +57,8 @@ public class BookingDataManager {
     }
 
     private void addDefaultData() {
-        bookingList.add(new BookingInfo("Alice", "Trek Domane", "2024-12-15", 3, true));
-        bookingList.add(new BookingInfo("Bob", "Giant Defy", "2024-12-16", 5, false));
-        bookingList.add(new BookingInfo("Charlie", "Specialized Allez", "2024-12-17", 2, true));
+        bookingList.add(new BookingInfo("Trek", "Mountain Bike", 20.0, true));
+        bookingList.add(new BookingInfo("Specialized", "Electric Bike", 30.0, true));
+        bookingList.add(new BookingInfo("Giant", "Gearless Bike", 15.0, false));
     }
 }
