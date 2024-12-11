@@ -27,14 +27,12 @@ class ButtonEditor extends DefaultCellEditor {
         button.setText(label);
         isPushed = true;
         currentRow = row;
-        System.out.println("Row selected: " + currentRow); // Debug statement
         return button;
     }
 
     @Override
     public Object getCellEditorValue() {
         if (isPushed) {
-            System.out.println("View Details button clicked for row: " + currentRow);
             BookingInfo booking = bookings.get(currentRow);
             new BikeDetailsUI(parentFrame, "Bike Details", booking, browseBikesUI);
         }

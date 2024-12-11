@@ -17,7 +17,6 @@ class BookingHistoryUI {
 
         List<BookingInfo> bookings = BookingDataManager.getInstance().getBookings();
 
-        // Filter only rented bikes
         rentedBikes = bookings.stream()
                 .filter(booking -> !booking.getRentalDate().isEmpty() && !booking.isBookingPending())
                 .collect(Collectors.toList());
