@@ -22,7 +22,7 @@ public class ManageRentalRequestsUI {
         tableData = prepareTableData(pendingRequests);
         requestTable = new JTable(tableData, columnNames) {
             public boolean isCellEditable(int row, int column) {
-                return column == 4; // Only Actions column is editable
+                return column == 4;
             }
         };
 

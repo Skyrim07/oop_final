@@ -43,6 +43,8 @@ class RentalRequestButtonEditor extends DefaultCellEditor {
                 JOptionPane.showMessageDialog(parentFrame, "Request approved!");
             } else if (action == 1) {
                 request.setBookingPending(false);
+                request.setRentalDate("");
+                request.setAvailable((true));
                 JOptionPane.showMessageDialog(parentFrame, "Request rejected!");
             }
             BookingDataManager.getInstance().saveBookingData();
