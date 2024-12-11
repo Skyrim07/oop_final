@@ -87,7 +87,7 @@ class BrowseBikesUI {
             data[i][1] = booking.getType();
             data[i][2] = booking.getPrice();
             data[i][3] = booking.isAvailable() ? "Available" : "Unavailable";
-            data[i][4] = "View Details";
+            data[i][4] = "Details & Booking";
         }
         return data;
     }

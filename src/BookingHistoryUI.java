@@ -19,7 +19,7 @@ class BookingHistoryUI {
 
         // Filter only rented bikes
         rentedBikes = bookings.stream()
-                .filter(booking -> !booking.getRentalDate().isEmpty())
+                .filter(booking -> !booking.getRentalDate().isEmpty() && !booking.isBookingPending())
                 .collect(Collectors.toList());
 
         JPanel mainPanel = new JPanel(new BorderLayout());

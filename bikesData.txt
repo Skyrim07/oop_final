@@ -1,1 +1,2 @@
-A,Electric Bike,2.0,true,
+A,Mountain Bike,2323.0,true,,false
+B,Mountain Bike,99.0,false,2024-12-16,false

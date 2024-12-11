@@ -1,9 +1,12 @@
+import java.util.Objects;
+
 class BookingInfo {
     private String brand;
     private String type;
     private double price;
     private boolean available;
     private String rentalDate;
+    private boolean isBookingPending;
 
     public BookingInfo(String brand, String type, double price, boolean available) {
         this.brand = brand;
@@ -41,6 +44,10 @@ class BookingInfo {
         return available;
     }
 
+    public boolean isBookingPending() {
+        return isBookingPending;
+    }
+
     public void setAvailable(boolean available) {
         this.available = available;
     }
@@ -53,9 +60,17 @@ class BookingInfo {
         this.rentalDate = rentalDate;
     }
 
+    public void setRentalPending(boolean isBookingPending) {
+        this.isBookingPending = isBookingPending;
+    }
+
+    public void setBookingPending(boolean bookingPending) {
+        isBookingPending = bookingPending;
+    }
+
     @Override
     public String toString() {
-        return brand + "," + type + "," + price + "," + available + "," + rentalDate;
+        return brand + "," + type + "," + price + "," + available + "," + rentalDate + "," + isBookingPending;
     }
 
     public static BookingInfo fromString(String line) {
@@ -71,6 +86,9 @@ class BookingInfo {
         BookingInfo booking = new BookingInfo(parts[0], parts[1], Double.parseDouble(parts[2]), Boolean.parseBoolean(parts[3]));
         if (parts.length > 4) {
             booking.setRentalDate(parts[4]);
+        }
+        if (parts.length > 5) {
+            booking.isBookingPending = (Boolean.parseBoolean(parts[5]));
         }
         return booking;
     }

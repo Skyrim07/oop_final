@@ -46,10 +46,11 @@ class BikeDetailsUI {
                     LocalDate rentalDate = currentDate.plusDays(duration);
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                     booking.setRentalDate(rentalDate.format(formatter));
+                    booking.setRentalPending(true);
 
                     BookingDataManager.getInstance().saveBookingData();
                     browseBikesUI.refreshTableData();
-                    JOptionPane.showMessageDialog(dialog, "Bike booked successfully until " + rentalDate.format(formatter) + "!");
+                    JOptionPane.showMessageDialog(dialog, "Booking request sent! Booking until " + rentalDate.format(formatter) + "!");
                     dialog.dispose();
                 } else {
                     JOptionPane.showMessageDialog(dialog, "Bike is already unavailable.", "Error", JOptionPane.ERROR_MESSAGE);
