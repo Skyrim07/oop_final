@@ -102,7 +102,7 @@ class BrowseBikesUI {
         double minPrice = minPriceText.isEmpty() ? Double.MIN_VALUE : Double.parseDouble(minPriceText);
         double maxPrice = maxPriceText.isEmpty() ? Double.MAX_VALUE : Double.parseDouble(maxPriceText);
 
-        List<BookingInfo> filteredBookings = FilterData();
+        List<BookingInfo> filteredBookings = FilterData(brand, type, availableOnly, minPrice, maxPrice);
 
         if (!filteredBookings.isEmpty()) {
             tableData = prepareTableData(filteredBookings);
@@ -120,7 +120,7 @@ class BrowseBikesUI {
         bikeTable.getColumn("Action").setCellEditor(new ButtonEditor(new JCheckBox(), frame, this, bookings));
     }
 
-    public List<BookingInfo> FilterData()
+    public List<BookingInfo> FilterData(String brand, String type, boolean availableOnly, double minPrice, double maxPrice)
     {
         List<BookingInfo> filteredBookings = new ArrayList<>();
         for (BookingInfo booking : bookings) {
@@ -147,6 +147,7 @@ class BrowseBikesUI {
                 filteredBookings.add(booking);
             }
         }
+        return filteredBookings;
     }
 
 
