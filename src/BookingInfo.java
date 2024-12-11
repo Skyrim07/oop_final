@@ -50,11 +50,20 @@ class BookingInfo {
     }
 
     public static BookingInfo fromString(String line) {
+        if (line == null || line.trim().isEmpty()) {
+            return null;
+        }
+
         String[] parts = line.split(",");
+        if (parts.length < 4) {
+            throw new IllegalArgumentException("Invalid data format: " + line);
+        }
+
         BookingInfo booking = new BookingInfo(parts[0], parts[1], Double.parseDouble(parts[2]), Boolean.parseBoolean(parts[3]));
         if (parts.length > 4) {
             booking.setRentalDate(parts[4]);
         }
         return booking;
     }
+
 }

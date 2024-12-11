@@ -9,7 +9,7 @@ public class BikeRentalApp {
             frame.setSize(600, 400);
 
             JPanel mainPanel = new JPanel(new GridLayout(2, 1, 10, 10));
-
+            BookingDataManager.getInstance();
             JButton renterButton = new JButton("Bike Renter");
             JButton adminButton = new JButton("Admin");
 

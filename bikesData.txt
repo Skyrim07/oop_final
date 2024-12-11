@@ -1,3 +1,23 @@
-Trek,Mountain Bike,20.0,true
-Specialized,Electric Bike,30.0,true
-Giant,Gearless Bike,15.0,true
+Trek,Mountain Bike,20.0,true,
+Specialized,Electric Bike,30.0,true,
+Giant,Gearless Bike,15.0,false,
+Cannondale,Off-Roading Bike,25.0,true,
+Scott,Mountain Bike,22.0,true,
+Bianchi,Road Bike,35.0,false,2025-02-04
+Merida,Electric Bike,40.0,false,
+Fuji,Gearless Bike,18.0,true,
+Kona,Off-Roading Bike,27.0,true,
+Cube,Mountain Bike,24.0,false,
+GT,Road Bike,33.0,true,
+Norco,Electric Bike,37.0,true,
+Santa Cruz,Off-Roading Bike,45.0,false,
+Yeti,Mountain Bike,28.0,true,
+Pivot,Road Bike,38.0,false,
+Cervelo,Gearless Bike,16.0,true,
+Orbea,Electric Bike,42.0,true,
+Raleigh,Road Bike,29.0,false,
+Surly,Off-Roading Bike,32.0,true,
+Marin,Mountain Bike,26.0,true,
+Salsa,Road Bike,34.0,false,
+Trek FX,Hybrid Bike,20.0,true,
+Specialized Diverge,Gravel Bike,35.0,true,
