@@ -1,3 +1,0 @@
-Alice,Trek Domane,2024-12-15,3,true
-Bob,Giant Defy,2024-12-16,5,true
-Charlie,Specialized Allez,2024-12-17,2,true
