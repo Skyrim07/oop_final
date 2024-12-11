@@ -20,6 +20,7 @@ class BikeDetailsUI {
         bookingPanel.add(new JLabel("Duration (days):"));
 
         JTextField durationField = new JTextField();
+        durationField.setPreferredSize(new Dimension(50, 5));
         bookingPanel.add(durationField);
 
         JButton bookButton = new JButton("Book");
