@@ -63,7 +63,7 @@ class BookingHistoryUI {
 
     public void refreshTableData() {
         rentedBikes = BookingDataManager.getInstance().getBookings().stream()
-                .filter(booking -> !booking.getRentalDate().isEmpty())
+                .filter(booking -> !booking.getRentalDate().isEmpty() && !booking.isBookingPending())
                 .collect(Collectors.toList());
         tableData = prepareTableData(rentedBikes);
         bookingTable.setModel(new javax.swing.table.DefaultTableModel(tableData, columnNames));
