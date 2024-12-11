@@ -1,9 +1,9 @@
-Trek,Mountain Bike,20.0,true,
-Specialized,Electric Bike,30.0,true,
+Trek,Mountain Bike,20.0,false,2025-02-04
+Specialized,Electric Bike,30.0,false,2024-12-14
 Giant,Gearless Bike,15.0,false,
 Cannondale,Off-Roading Bike,25.0,true,
 Scott,Mountain Bike,22.0,true,
-Bianchi,Road Bike,35.0,false,2025-02-04
+Bianchi,Road Bike,35.0,true,
 Merida,Electric Bike,40.0,false,
 Fuji,Gearless Bike,18.0,true,
 Kona,Off-Roading Bike,27.0,true,
