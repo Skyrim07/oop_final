@@ -102,6 +102,26 @@ class BrowseBikesUI {
         double minPrice = minPriceText.isEmpty() ? Double.MIN_VALUE : Double.parseDouble(minPriceText);
         double maxPrice = maxPriceText.isEmpty() ? Double.MAX_VALUE : Double.parseDouble(maxPriceText);
 
+        List<BookingInfo> filteredBookings = FilterData();
+
+        if (!filteredBookings.isEmpty()) {
+            tableData = prepareTableData(filteredBookings);
+        } else {
+            tableData = new Object[0][6];
+        }
+
+        bikeTable.setModel(new javax.swing.table.DefaultTableModel(tableData, columnNames) {
+            public boolean isCellEditable(int row, int column) {
+                return column == 5;
+            }
+        });
+
+        bikeTable.getColumn("Action").setCellRenderer(new ButtonRenderer());
+        bikeTable.getColumn("Action").setCellEditor(new ButtonEditor(new JCheckBox(), frame, this, bookings));
+    }
+
+    public List<BookingInfo> FilterData()
+    {
         List<BookingInfo> filteredBookings = new ArrayList<>();
         for (BookingInfo booking : bookings) {
             boolean matches = true;
@@ -127,21 +147,6 @@ class BrowseBikesUI {
                 filteredBookings.add(booking);
             }
         }
-
-        if (!filteredBookings.isEmpty()) {
-            tableData = prepareTableData(filteredBookings);
-        } else {
-            tableData = new Object[0][6];
-        }
-
-        bikeTable.setModel(new javax.swing.table.DefaultTableModel(tableData, columnNames) {
-            public boolean isCellEditable(int row, int column) {
-                return column == 5;
-            }
-        });
-
-        bikeTable.getColumn("Action").setCellRenderer(new ButtonRenderer());
-        bikeTable.getColumn("Action").setCellEditor(new ButtonEditor(new JCheckBox(), frame, this, bookings));
     }
 
 
