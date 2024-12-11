@@ -7,7 +7,12 @@ public class BikeRentalApp {
             JFrame frame = new JFrame("Bike Rental Management System");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(600, 400);
+            frame.setLayout(new BorderLayout(10, 10));
 
+            JLabel titleLabel = new JLabel("Welcome to the Bike Rental Management System!", SwingConstants.CENTER);
+            titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
+            frame.add(titleLabel, BorderLayout.NORTH);
+            
             JPanel mainPanel = new JPanel(new GridLayout(2, 1, 10, 10));
             BookingDataManager.getInstance();
             JButton renterButton = new JButton("Bike Renter");
