@@ -34,7 +34,7 @@ class BrowseBikesUI {
         searchPanel.add(brandField);
 
         searchPanel.add(new JLabel("Type:"));
-        typeComboBox = new JComboBox<>(new String[]{"All", "Mountain Bike", "Electric Bike", "Gearless Bike", "Off-Roading Bike"});
+        typeComboBox = new JComboBox<>(new String[]{"All", "Mountain Bike", "Electric Bike", "Casual Bike"});
         searchPanel.add(typeComboBox);
 
         searchPanel.add(new JLabel("Availability:"));

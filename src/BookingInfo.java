@@ -1,6 +1,3 @@
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 class BookingInfo {
     private String brand;
     private String type;
@@ -20,12 +17,24 @@ class BookingInfo {
         return brand;
     }
 
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
     public String getType() {
         return type;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public double getPrice() {
         return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public boolean isAvailable() {
@@ -65,5 +74,4 @@ class BookingInfo {
         }
         return booking;
     }
-
 }

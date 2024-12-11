@@ -21,9 +21,14 @@ class RenterUI {
             new BookingHistoryUI();
             frame.dispose();
         });
-
+        JButton backButton = new JButton("Back");
+        backButton.addActionListener(e -> {
+            BikeRentalApp.main(new String[]{});
+            frame.dispose();
+        });
         mainPanel.add(browseBikesButton);
         mainPanel.add(viewHistoryButton);
+        mainPanel.add(backButton, BorderLayout.SOUTH);
 
         frame.add(mainPanel, BorderLayout.CENTER);
         frame.setVisible(true);
