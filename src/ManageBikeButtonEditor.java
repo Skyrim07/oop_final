@@ -18,21 +18,27 @@ class ManageBikeButtonEditor extends DefaultCellEditor {
         this.manageBikesUI = manageBikesUI;
         button = new JButton();
         button.setOpaque(true);
-        button.addActionListener(e -> fireEditingStopped());
+        button.addActionListener(e -> {
+            if (currentRow >= 0 && currentRow < bikes.size()) {
+                fireEditingStopped();
+            }
+        });
     }
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        label = (value == null) ? "" : value.toString();
-        button.setText(label);
-        isPushed = true;
-        currentRow = row;
+        if (row >= 0 && row < bikes.size()) {
+            label = (value == null) ? "" : value.toString();
+            button.setText(label);
+            currentRow = row;
+            isPushed = true;
+        }
         return button;
     }
 
     @Override
     public Object getCellEditorValue() {
-        if (isPushed) {
+        if (isPushed && currentRow >= 0 && currentRow < bikes.size()) {
             BookingInfo bike = bikes.get(currentRow);
             int action = JOptionPane.showOptionDialog(parentFrame, "Choose action for the bike.", "Manage Bike",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,

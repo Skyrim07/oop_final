@@ -18,21 +18,27 @@ class RentalRequestButtonEditor extends DefaultCellEditor {
         this.manageRequestsUI = manageRequestsUI;
         button = new JButton();
         button.setOpaque(true);
-        button.addActionListener(e -> fireEditingStopped());
+        button.addActionListener(e -> {
+            if (currentRow >= 0 && currentRow < requests.size()) {
+                fireEditingStopped();
+            }
+        });
     }
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        label = (value == null) ? "" : value.toString();
-        button.setText(label);
-        isPushed = true;
-        currentRow = row;
+        if (row >= 0 && row < requests.size()) {
+            label = (value == null) ? "" : value.toString();
+            button.setText(label);
+            currentRow = row;
+            isPushed = true;
+        }
         return button;
     }
 
     @Override
     public Object getCellEditorValue() {
-        if (isPushed) {
+        if (isPushed && currentRow >= 0 && currentRow < requests.size()) {
             BookingInfo request = requests.get(currentRow);
             int action = JOptionPane.showOptionDialog(parentFrame, "Choose action for the request.", "Manage Request",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
@@ -44,7 +50,7 @@ class RentalRequestButtonEditor extends DefaultCellEditor {
             } else if (action == 1) {
                 request.setBookingPending(false);
                 request.setRentalDate("");
-                request.setAvailable((true));
+                request.setAvailable(true);
                 JOptionPane.showMessageDialog(parentFrame, "Request rejected!");
             }
             BookingDataManager.getInstance().saveBookingData();
