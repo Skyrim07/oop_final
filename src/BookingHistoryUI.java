@@ -17,9 +17,7 @@ class BookingHistoryUI {
 
         List<BookingInfo> bookings = BookingDataManager.getInstance().getBookings();
 
-        rentedBikes = bookings.stream()
-                .filter(booking -> !booking.getRentalDate().isEmpty() && !booking.isBookingPending())
-                .collect(Collectors.toList());
+        rentedBikes = FilterBikes(bookings);
 
         JPanel mainPanel = new JPanel(new BorderLayout());
 
@@ -45,6 +43,13 @@ class BookingHistoryUI {
 
         frame.add(mainPanel);
         frame.setVisible(true);
+    }
+
+    private List<BookingInfo> FilterBikes(List<BookingInfo> bookings)
+    {
+        return bookings.stream()
+                .filter(booking -> !booking.getRentalDate().isEmpty() && !booking.isBookingPending())
+                .collect(Collectors.toList());
     }
 
     private Object[][] prepareTableData(List<BookingInfo> bookings) {
