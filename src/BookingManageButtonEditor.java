@@ -20,7 +20,10 @@ class BookingManageButtonEditor extends DefaultCellEditor {
         button.setOpaque(true);
         button.addActionListener(e -> {
             if (currentRow >= 0 && currentRow < bookings.size()) {
-                fireEditingStopped();
+                try {
+                    fireEditingStopped();
+                } catch (IndexOutOfBoundsException ex) {
+                }
             }
         });
     }

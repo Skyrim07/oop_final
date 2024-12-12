@@ -20,7 +20,10 @@ class ManageBikeButtonEditor extends DefaultCellEditor {
         button.setOpaque(true);
         button.addActionListener(e -> {
             if (currentRow >= 0 && currentRow < bikes.size()) {
-                fireEditingStopped();
+                try {
+                    fireEditingStopped();
+                } catch (IndexOutOfBoundsException ex) {
+                }
             }
         });
     }

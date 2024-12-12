@@ -20,7 +20,10 @@ class RentalRequestButtonEditor extends DefaultCellEditor {
         button.setOpaque(true);
         button.addActionListener(e -> {
             if (currentRow >= 0 && currentRow < requests.size()) {
-                fireEditingStopped();
+                try {
+                    fireEditingStopped();
+                } catch (IndexOutOfBoundsException ex) {
+                }
             }
         });
     }
@@ -32,6 +35,8 @@ class RentalRequestButtonEditor extends DefaultCellEditor {
             button.setText(label);
             currentRow = row;
             isPushed = true;
+        } else {
+            currentRow = -1;
         }
         return button;
     }
