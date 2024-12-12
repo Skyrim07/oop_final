@@ -15,8 +15,8 @@ public class BikeRentalApp {
 
             JPanel mainPanel = new JPanel(new GridLayout(2, 1, 10, 10));
             BookingDataManager.getInstance();
-            JButton renterButton = new JButton("Bike Renter");
-            JButton adminButton = new JButton("Admin");
+            JButton renterButton = new JButton("I am bike renter");
+            JButton adminButton = new JButton("I am administrator");
 
             renterButton.addActionListener(e -> {
                 new RenterUI();
