@@ -43,6 +43,11 @@ class RentalRequestButtonEditor extends DefaultCellEditor {
 
     @Override
     public Object getCellEditorValue() {
+        SelectAction();
+        return label;
+    }
+
+    private void SelectAction(){
         if (isPushed && currentRow >= 0 && currentRow < requests.size()) {
             BookingInfo request = requests.get(currentRow);
             int action = JOptionPane.showOptionDialog(parentFrame, "Choose action for the request.", "Manage Request",
@@ -62,7 +67,6 @@ class RentalRequestButtonEditor extends DefaultCellEditor {
             manageRequestsUI.refreshTableData();
         }
         isPushed = false;
-        return label;
     }
 
     @Override
